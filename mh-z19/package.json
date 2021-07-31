@@ -1,0 +1,14 @@
+{
+  "name": "mh-z19",
+  "version": "0.0.1",
+  "description": "ged info from mh-z19",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mh-z19b": "git+https://github.com/CheStas/MH-Z19B.git"
+  }
+}
