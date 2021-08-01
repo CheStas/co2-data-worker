@@ -7,10 +7,11 @@ volumes:
 services:
  mhz19:
   build: "./mh-z19"
+  privileged: true
   ports:
   - 3000:3000
   volumes:
-  - .:/code
+  - /dev:/dev
  prometheus:
   image : prom/prometheus
   container_name: prometheus

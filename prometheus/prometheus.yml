@@ -13,3 +13,12 @@ scrape_configs:
     static_configs:
          - targets: ['localhost:9090']
 
+
+  - job_name: 'co2'
+    scrape_interval: 30s
+    scrape_timeout: 15s
+    metrics_path: '/co2'
+    static_configs:
+            - targets: ['mhz19:3000']
+
+

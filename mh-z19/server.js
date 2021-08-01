@@ -5,18 +5,19 @@ const MHZ19B = require('mh-z19b');
 const PORT = 3000;
 const HOST = '0.0.0.0';
 
- const mhz19b = new MHZ19B();
- mhz19b.abcOff();
+const mhz19b = new MHZ19B('/dev/ttyS0');
+mhz19b.abcOff();
 
 const server = http.createServer(async (req, res) => {
 	const route = url.parse(req.url).pathname;
 	if (route === '/co2') {
 		try {
 			const co2res = await mhz19b.readCO2();
-			res.writeHead(200, {});
-			res.end(co2res);
+			res.writeHead(200, {'Content-Type': 'text/plain;'});
+			res.end(`co2 ${co2res}`);
 
 		} catch(e) {
+			console.error(e);
 			res.writeHead(500, {});
 			res.end(e);
 		}
