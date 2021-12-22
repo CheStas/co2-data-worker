@@ -14,7 +14,9 @@ const server = http.createServer(async (req, res) => {
 		try {
 			const co2res = await mhz19b.readCO2();
 			res.writeHead(200, {'Content-Type': 'text/plain;'});
-			res.end(`co2 ${co2res}`);
+			res.write(`co2 ${co2res.co2}`);
+			res.write('\n');
+			res.end(`temp ${co2res.temperature}`);
 
 		} catch(e) {
 			console.error(e);
@@ -22,6 +24,18 @@ const server = http.createServer(async (req, res) => {
 			res.end(e);
 		}
 	return;
+	} else if (route === '/allmhz19') {
+		try {
+			const co2res = await mhz19b.readCO2();
+			res.writeHead(200, {'Content-Type': 'application/json'});
+			res.end(JSON.stringify(co2res));
+
+		} catch(e) {
+			console.error(e);
+			res.writeHead(500, {});
+			res.end(e);
+		}
+		return;
 	}
 	res.writeHead(404, {});
 	res.end('not found');
