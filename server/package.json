@@ -1,15 +1,16 @@
 {
-  "name": "mh-z19",
+  "name": "server_home",
   "version": "0.0.1",
-  "description": "ged info from mh-z19",
+  "description": "ged info from local devices",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "i2c-bus": "^5.2.2",
-    "mh-z19b": "git+https://github.com/CheStas/MH-Z19B.git"
+    "mh-z19b": "git+https://github.com/CheStas/MH-Z19B.git",
+    "pigpio": "^3.3.1"
   }
 }

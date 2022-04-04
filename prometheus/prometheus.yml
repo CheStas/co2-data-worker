@@ -19,6 +19,13 @@ scrape_configs:
     scrape_timeout: 15s
     metrics_path: '/co2'
     static_configs:
-            - targets: ['mhz19:3000']
+            - targets: ['server:3000']
+
+  - job_name: 'KyivAlert'
+    scrape_interval: 30s
+    scrape_timeout: 15s
+    metrics_path: '/getKyivAirRaidSiren'
+    static_configs:
+            - targets: ['server:3000']
 
 

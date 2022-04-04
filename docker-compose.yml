@@ -3,11 +3,14 @@ version: "3.8"
 volumes:
  prometheus_data: {}
  grafana_data: {}
+ etc_motioneye:
+ var_lib_motioneye:
 
 services:
- mhz19:
-  build: "./mh-z19"
+ server:
+  build: "./server"
   privileged: true
+  restart: always
   ports:
   - 3000:3000
   volumes:
@@ -30,6 +33,16 @@ services:
   volumes:
    - grafana_data:/var/lib/grafana
    - ./grafana/provisioning/:/etc/grafana/provisioning/
+   - ./grafana/config/custom.ini:/etc/grafana/grafana.ini
   ports:
   - 4200:3000
   restart: always
+  # motioneye:
+  # image: ccrisan/motioneye:master-armhf # Change to ccrisan/motioneye:master-armhf for ARM chips (Pi etc.)
+  # devices:
+  # - "/dev/video0:/dev/video0"
+  # ports:
+  # - 8081:8081
+  # - 8765:8765
+  # volumes:
+  #  - /home/ubuntu/motioneye:/var/lib/motioneye
